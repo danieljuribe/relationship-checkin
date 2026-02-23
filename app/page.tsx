@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   questions,
   categories,
@@ -30,6 +31,7 @@ function overallEmoji(score: number) {
 }
 
 export default function Home() {
+  const router = useRouter();
   const [stage, setStage] = useState<Stage>('welcome');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
@@ -325,10 +327,18 @@ export default function Home() {
             </div>
           )}
 
+          {/* Feedback on the app */}
+          <button
+            onClick={() => router.push(`/feedback?score=${result.overall}`)}
+            className="w-full py-3 rounded-2xl border-2 border-pink-200 text-pink-400 font-semibold text-sm transition-all hover:bg-pink-50"
+          >
+            💌 Leave feedback on this app
+          </button>
+
           {/* Retake */}
           <button
             onClick={() => { setStage('welcome'); setCurrentIndex(0); setAnswers({}); setResult(null); }}
-            className="w-full py-3 rounded-2xl border-2 border-pink-200 text-pink-400 font-semibold text-sm transition-all hover:bg-pink-50"
+            className="w-full py-3 rounded-2xl text-slate-300 font-medium text-sm transition-all hover:text-slate-400"
           >
             🌸 Start over
           </button>
