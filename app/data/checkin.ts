@@ -19,78 +19,78 @@ export interface Category {
 export const categories: Record<CategoryKey, Category> = {
   connection: {
     key: 'connection',
-    label: 'Connection',
+    label: 'Conexión',
     emoji: '💛',
-    source: 'Gottman: Love Maps & Bids',
-    description: 'How seen, heard, and close you felt to each other this week.',
+    source: 'Gottman: Mapas del amor y "bids"',
+    description: 'Qué tan visto, escuchado y cercano te sentiste esta semana.',
     conversationStarters: [
-      `"What's been taking up the most space in your head this week that I might not know about?"`,
-      `"Is there something you've been wanting to tell me but haven't found the right moment?"`,
-      `"What's one thing I could do more of that makes you feel close to me?"`,
+      `"¿Qué es lo que más ha ocupado tu cabeza esta semana y que quizás yo no sé?"`,
+      `"¿Hay algo que has querido contarme pero no has encontrado el momento?"`,
+      `"¿Qué es una cosa que yo podría hacer más para que te sientas cerca de mí?"`,
     ],
   },
   communication: {
     key: 'communication',
-    label: 'Communication',
+    label: 'Comunicación',
     emoji: '💬',
-    source: 'Gottman: Four Horsemen Antidotes',
-    description: 'How you handled disagreement, tension, and repair this week.',
+    source: 'Gottman: Los Cuatro Jinetes y sus antídotos',
+    description: 'Cómo manejaron los desacuerdos, la tensión y la reparación esta semana.',
     conversationStarters: [
-      '"Was there a moment this week where you felt unheard or dismissed — even a small one?"',
-      '"When I brought something up that was hard, how did it land for you?"',
-      '"What would have made a recent tough conversation go better?"',
+      '"¿Hubo un momento esta semana en que te sentiste ignorado o menospreciado — aunque fuera pequeño?"',
+      '"Cuando saqué algo difícil a relucir, ¿cómo lo recibiste?"',
+      '"¿Qué hubiera hecho mejor una conversación reciente que fue difícil?"',
     ],
   },
   patterns: {
     key: 'patterns',
-    label: 'Patterns',
+    label: 'Patrones',
     emoji: '🌀',
-    source: 'Terry Real: Wise Adult / Adaptive Child',
-    description: 'Whether you showed up as your best self or fell into old reactive habits.',
+    source: 'Terry Real: Adulto sabio / Niño adaptado',
+    description: 'Si fuiste tu mejor versión o caíste en viejos hábitos reactivos.',
     conversationStarters: [
-      '"Did you notice me going into any old patterns this week? It\'s okay to say it."',
-      '"When did I seem most like my best self this week?"',
-      '"Is there something I do when I\'m stressed that makes it harder for you to reach me?"',
+      '"¿Notaste que yo caí en algún patrón viejo esta semana? Está bien decirlo."',
+      '"¿Cuándo parecí más mi mejor versión esta semana?"',
+      '"¿Hay algo que hago cuando estoy estresado que te hace más difícil llegar a mí?"',
     ],
   },
   vision: {
     key: 'vision',
-    label: 'Vision',
+    label: 'Visión',
     emoji: '🌟',
-    source: 'Gottman: Shared Meaning & Goals',
-    description: 'Whether you feel aligned and excited about where you\'re going together.',
+    source: 'Gottman: Significado compartido y metas',
+    description: 'Si te sientes alineado y emocionado con hacia dónde van juntos.',
     conversationStarters: [
-      '"What\'s something you\'re looking forward to doing together in the next few months?"',
-      '"Do you feel like I know what matters most to you right now — your goals, your fears?"',
-      '"Is there anything about our future together that feels uncertain or unspoken?"',
+      '"¿Qué es algo que tienes ganas de hacer juntos en los próximos meses?"',
+      '"¿Sientes que yo sé lo que más te importa ahora mismo — tus metas, tus miedos?"',
+      '"¿Hay algo sobre nuestro futuro juntos que se siente incierto o no dicho?"',
     ],
   },
 };
 
 export const questions: CheckInQuestion[] = [
-  // Connection
-  { id: 1, category: 'connection', text: 'This week I felt truly seen by my partner' },
-  { id: 2, category: 'connection', text: 'When I reached out for connection, they responded warmly' },
-  { id: 3, category: 'connection', text: 'I know what\'s been on their mind lately — their worries, hopes, day-to-day' },
-  { id: 4, category: 'connection', text: 'We had at least one real conversation this week (not just logistics)' },
+  // Conexión
+  { id: 1, category: 'connection', text: 'Esta semana me sentí verdaderamente visto/a por mi pareja' },
+  { id: 2, category: 'connection', text: 'Cuando busqué conexión, respondió con calidez' },
+  { id: 3, category: 'connection', text: 'Sé lo que ha tenido en mente últimamente — sus preocupaciones, esperanzas, el día a día' },
+  { id: 4, category: 'connection', text: 'Tuvimos al menos una conversación real esta semana (no solo logística)' },
 
-  // Communication
-  { id: 5, category: 'communication', text: 'When we disagreed, I expressed myself without attacking their character' },
-  { id: 6, category: 'communication', text: 'I felt respected even when we didn\'t see eye to eye' },
-  { id: 7, category: 'communication', text: 'When something bothered me, I brought it up without blame' },
-  { id: 8, category: 'communication', text: 'We were able to repair quickly after any tension' },
+  // Comunicación
+  { id: 5, category: 'communication', text: 'Cuando no estuvimos de acuerdo, me expresé sin atacar su carácter' },
+  { id: 6, category: 'communication', text: 'Me sentí respetado/a incluso cuando no vimos las cosas igual' },
+  { id: 7, category: 'communication', text: 'Cuando algo me molestó, lo saqué sin culpar' },
+  { id: 8, category: 'communication', text: 'Pudimos reparar rápidamente después de cualquier tensión' },
 
-  // Patterns
-  { id: 9, category: 'patterns', text: 'I noticed myself shutting down or going cold instead of talking', reversed: true },
-  { id: 10, category: 'patterns', text: 'I stayed curious about their perspective instead of defending mine' },
-  { id: 11, category: 'patterns', text: 'I showed up as my best self — present, not triggered, not checked out' },
-  { id: 12, category: 'patterns', text: 'Old reactive patterns flared up for me this week (going big, withdrawing...)', reversed: true },
+  // Patrones
+  { id: 9, category: 'patterns', text: 'Me noté cerrándome o enfriándome en lugar de hablar', reversed: true },
+  { id: 10, category: 'patterns', text: 'Me mantuve curioso/a sobre su perspectiva en lugar de defenderme' },
+  { id: 11, category: 'patterns', text: 'Estuve presente como mi mejor versión — sin detonantes, sin desconectarme' },
+  { id: 12, category: 'patterns', text: 'Patrones reactivos viejos aparecieron esta semana (explotando, retirándome...)', reversed: true },
 
-  // Vision
-  { id: 13, category: 'vision', text: 'We\'re aligned on what matters most to us right now' },
-  { id: 14, category: 'vision', text: 'I feel like we\'re building something together, not just coexisting' },
-  { id: 15, category: 'vision', text: 'I\'m excited about where we\'re headed as a couple' },
-  { id: 16, category: 'vision', text: 'I feel like my partner knows and supports my personal dreams' },
+  // Visión
+  { id: 13, category: 'vision', text: 'Estamos alineados en lo que más nos importa ahora mismo' },
+  { id: 14, category: 'vision', text: 'Siento que estamos construyendo algo juntos, no solo conviviendo' },
+  { id: 15, category: 'vision', text: 'Me emociona hacia dónde vamos como pareja' },
+  { id: 16, category: 'vision', text: 'Siento que mi pareja conoce y apoya mis sueños personales' },
 ];
 
 export interface CategoryScore {
@@ -178,9 +178,9 @@ export function decodeScores(encoded: string): { overall: number; categories: Ca
 }
 
 export const emojiScale = [
-  { value: 1, emoji: '😕', label: 'Not at all' },
-  { value: 2, emoji: '😐', label: 'A little' },
-  { value: 3, emoji: '🙂', label: 'Somewhat' },
-  { value: 4, emoji: '😊', label: 'Mostly yes' },
-  { value: 5, emoji: '🥰', label: 'Absolutely' },
+  { value: 1, emoji: '😕', label: 'Para nada' },
+  { value: 2, emoji: '😐', label: 'Un poco' },
+  { value: 3, emoji: '🙂', label: 'Algo sí' },
+  { value: 4, emoji: '😊', label: 'Casi siempre' },
+  { value: 5, emoji: '🥰', label: 'Totalmente' },
 ];

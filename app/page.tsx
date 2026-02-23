@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   questions,
   categories,
@@ -18,9 +19,9 @@ type Stage = 'welcome' | 'checkin' | 'results' | 'compare';
 const categoryOrder: CategoryKey[] = ['connection', 'communication', 'patterns', 'vision'];
 
 const tierConfig = {
-  thriving: { label: 'Thriving', emoji: '🌱', color: '#86efac', bg: 'bg-green-50', text: 'text-green-700' },
-  growing: { label: 'Growing', emoji: '🌤️', color: '#fcd34d', bg: 'bg-yellow-50', text: 'text-yellow-700' },
-  attention: { label: 'Needs attention', emoji: '🌧️', color: '#fca5a5', bg: 'bg-red-50', text: 'text-red-600' },
+  thriving: { label: 'Floreciendo', emoji: '🌱', color: '#86efac', bg: 'bg-green-50', text: 'text-green-700' },
+  growing: { label: 'Creciendo', emoji: '🌤️', color: '#fcd34d', bg: 'bg-yellow-50', text: 'text-yellow-700' },
+  attention: { label: 'Necesita atención', emoji: '🌧️', color: '#fca5a5', bg: 'bg-red-50', text: 'text-red-600' },
 };
 
 function overallEmoji(score: number) {
@@ -90,57 +91,70 @@ export default function Home() {
   if (stage === 'welcome') {
     return (
       <main className="min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 p-10 max-w-md w-full text-center">
-          {partnerResult ? (
-            <>
-              <div className="text-5xl mb-3">💌</div>
-              <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-400 mb-2"
-                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                Your partner checked in
-              </p>
-              <h1 className="text-2xl font-bold text-slate-700 mb-2 leading-tight"
-                  style={{ fontFamily: 'Lora, serif' }}>
-                Now it&apos;s your turn
-              </h1>
-              <p className="text-slate-400 mb-6 text-sm leading-relaxed">
-                Fill out your own check-in and see how your answers compare side by side.
-              </p>
-            </>
-          ) : (
-            <>
-              <div className="text-5xl mb-3">💑</div>
-              <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-400 mb-2"
-                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                Weekly Check-In
-              </p>
-              <h1 className="text-2xl font-bold text-slate-700 mb-2 leading-tight"
-                  style={{ fontFamily: 'Lora, serif' }}>
-                How are we doing?
-              </h1>
-              <p className="text-slate-400 mb-6 text-sm leading-relaxed">
-                16 honest questions. Based on Gottman &amp; Terry Real.
-                Takes 3 minutes. No wrong answers.
-              </p>
-            </>
-          )}
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 max-w-md w-full overflow-hidden">
 
-          <div className="flex gap-2 justify-center mb-6">
-            {categoryOrder.map(key => (
-              <div key={key} className="flex flex-col items-center gap-1">
-                <span className="text-xl">{categories[key].emoji}</span>
-                <span className="text-xs text-slate-300">{categories[key].label}</span>
-              </div>
-            ))}
+          {/* Couple photo */}
+          <div className="relative h-56 w-full bg-pink-50">
+            <Image
+              src="/couple.jpg"
+              alt="Nosotros"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-3">
+              <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-500"
+                 style={{ fontFamily: 'Inter, sans-serif' }}>
+                El Pegue Semanal
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={handleStart}
-            className="w-full py-4 rounded-2xl text-white font-semibold text-base transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0"
-            style={{ background: 'linear-gradient(135deg, #f9a8d4, #ec4899)' }}
-          >
-            Begin Check-In →
-          </button>
-          <p className="text-xs text-slate-300 mt-3">🕊️ Just for you — fill it out honestly</p>
+          <div className="p-8 text-center">
+            {partnerResult ? (
+              <>
+                <div className="text-4xl mb-3">💌</div>
+                <h1 className="text-2xl font-bold text-slate-700 mb-2 leading-tight"
+                    style={{ fontFamily: 'Lora, serif' }}>
+                  Tu pareja ya respondió
+                </h1>
+                <p className="text-slate-400 mb-6 text-sm leading-relaxed">
+                  Ahora es tu turno. Responde y verán sus resultados lado a lado.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="text-4xl mb-3">💑</div>
+                <h1 className="text-2xl font-bold text-slate-700 mb-2 leading-tight"
+                    style={{ fontFamily: 'Lora, serif' }}>
+                  ¿Cómo vamos esta semana?
+                </h1>
+                <p className="text-slate-400 mb-6 text-sm leading-relaxed">
+                  16 preguntas honestas. Basado en Gottman y Terry Real.
+                  3 minutos. Sin respuestas incorrectas.
+                </p>
+              </>
+            )}
+
+            <div className="flex gap-2 justify-center mb-6">
+              {categoryOrder.map(key => (
+                <div key={key} className="flex flex-col items-center gap-1">
+                  <span className="text-xl">{categories[key].emoji}</span>
+                  <span className="text-xs text-slate-300">{categories[key].label}</span>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={handleStart}
+              className="w-full py-4 rounded-2xl text-white font-semibold text-base transition-all hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0"
+              style={{ background: 'linear-gradient(135deg, #f9a8d4, #ec4899)' }}
+            >
+              Comenzar →
+            </button>
+            <p className="text-xs text-slate-300 mt-3">🕊️ Solo para ti — responde con honestidad</p>
+          </div>
         </div>
       </main>
     );
@@ -200,7 +214,7 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="text-center text-slate-200 text-xs mt-4">— answer honestly, for yourself —</p>
+          <p className="text-center text-slate-200 text-xs mt-4">— responde para ti, con honestidad —</p>
         </div>
       </main>
     );
@@ -220,17 +234,17 @@ export default function Home() {
             <div className="text-6xl mb-2">{overallEmoji(result.overall)}</div>
             <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-400 mb-1"
                style={{ fontFamily: 'Inter, sans-serif' }}>
-              Your check-in
+              Tu check-in
             </p>
             <h2 className="text-4xl font-bold text-slate-700 mb-1" style={{ fontFamily: 'Lora, serif' }}>
               {result.overall}<span className="text-2xl text-slate-300">/100</span>
             </h2>
-            <p className="text-slate-400 text-sm">overall relationship health</p>
+            <p className="text-slate-400 text-sm">salud de la relación esta semana</p>
           </div>
 
           {/* Category breakdown */}
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 p-6">
-            <h3 className="text-sm font-semibold text-slate-500 mb-4">Breakdown</h3>
+            <h3 className="text-sm font-semibold text-slate-500 mb-4">Desglose</h3>
             {result.categories.map(cs => {
               const cat = categories[cs.category];
               const tier = tierConfig[cs.tier];
@@ -257,11 +271,11 @@ export default function Home() {
             })}
           </div>
 
-          {/* Partner comparison (if partner filled it out) */}
+          {/* Partner comparison */}
           {partnerResult && (
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 p-6">
-              <h3 className="text-sm font-semibold text-slate-500 mb-1">Side-by-side comparison</h3>
-              <p className="text-xs text-slate-300 mb-4">You vs your partner</p>
+              <h3 className="text-sm font-semibold text-slate-500 mb-1">Comparación lado a lado</h3>
+              <p className="text-xs text-slate-300 mb-4">Tú vs tu pareja</p>
               {result.categories.map((cs, i) => {
                 const cat = categories[cs.category];
                 const partnerScore = partnerResult.categories[i]?.score ?? 0;
@@ -272,7 +286,7 @@ export default function Home() {
                       <span className="text-sm font-medium text-slate-600">{cat.label}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-pink-400 w-6 text-right">You</span>
+                      <span className="text-xs text-pink-400 w-6 text-right">Yo</span>
                       <div className="flex-1 bg-pink-50 rounded-full h-2.5 overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${cs.score}%`, background: '#f9a8d4' }} />
                       </div>
@@ -296,7 +310,7 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-1">
               <span className="text-lg">{focusCat.emoji}</span>
               <h3 className="text-sm font-semibold text-slate-600">
-                Talk about: <span className="text-pink-500">{focusCat.label}</span>
+                Tema para hablar: <span className="text-pink-500">{focusCat.label}</span>
               </h3>
             </div>
             <p className="text-xs text-slate-300 mb-4">{focusCat.source}</p>
@@ -313,16 +327,16 @@ export default function Home() {
           {!partnerResult && (
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 p-6 text-center">
               <div className="text-2xl mb-2">💌</div>
-              <h3 className="text-sm font-semibold text-slate-600 mb-1">Invite your partner</h3>
+              <h3 className="text-sm font-semibold text-slate-600 mb-1">Invita a tu pareja</h3>
               <p className="text-xs text-slate-400 mb-4">
-                Send them this link. They fill it out, then you see your scores side by side.
+                Mándale este link. Ella responde y verán sus puntajes lado a lado.
               </p>
               <button
                 onClick={handleCopy}
                 className="w-full py-3 rounded-2xl text-white font-semibold text-sm transition-all hover:opacity-90"
                 style={{ background: 'linear-gradient(135deg, #f9a8d4, #ec4899)' }}
               >
-                {copied ? '✅ Copied!' : '📋 Copy partner link'}
+                {copied ? '✅ ¡Copiado!' : '📋 Copiar link para tu pareja'}
               </button>
             </div>
           )}
@@ -332,7 +346,7 @@ export default function Home() {
             onClick={() => router.push(`/feedback?score=${result.overall}`)}
             className="w-full py-3 rounded-2xl border-2 border-pink-200 text-pink-400 font-semibold text-sm transition-all hover:bg-pink-50"
           >
-            💌 Leave feedback on this app
+            💌 Dejar feedback sobre la app
           </button>
 
           {/* Retake */}
@@ -340,7 +354,7 @@ export default function Home() {
             onClick={() => { setStage('welcome'); setCurrentIndex(0); setAnswers({}); setResult(null); }}
             className="w-full py-3 rounded-2xl text-slate-300 font-medium text-sm transition-all hover:text-slate-400"
           >
-            🌸 Start over
+            🌸 Volver a empezar
           </button>
 
         </div>

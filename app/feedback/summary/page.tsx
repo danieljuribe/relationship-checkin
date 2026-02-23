@@ -17,7 +17,7 @@ export default function SummaryPage() {
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center text-slate-400">
-        Loading insights...
+        Cargando insights...
       </main>
     );
   }
@@ -61,18 +61,18 @@ export default function SummaryPage() {
           <div className="text-4xl mb-2">📊</div>
           <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-400 mb-1"
              style={{ fontFamily: 'Inter, sans-serif' }}>
-            Check-In Feedback
+            El Pegue Semanal
           </p>
           <h1 className="text-2xl font-bold text-slate-700 mb-1" style={{ fontFamily: 'Lora, serif' }}>
-            Insights
+            Insights de Feedback
           </h1>
-          <p className="text-slate-400 text-sm">{total} response{total !== 1 ? 's' : ''} collected</p>
+          <p className="text-slate-400 text-sm">{total} respuesta{total !== 1 ? 's' : ''} recopilada{total !== 1 ? 's' : ''}</p>
         </div>
 
         {total === 0 ? (
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-pink-100 p-10 text-center">
             <div className="text-5xl mb-3">🌱</div>
-            <p className="text-slate-400 text-sm">No feedback yet. Complete a check-in to start collecting responses!</p>
+            <p className="text-slate-400 text-sm">Todavía no hay feedback. ¡Completa un check-in para empezar!</p>
           </div>
         ) : (
           <div className="flex flex-col gap-4">
@@ -80,9 +80,9 @@ export default function SummaryPage() {
             {/* Top-line stats */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: 'Avg Usefulness', value: `${avgEnjoyment} / 5`, emoji: '⭐' },
-                { label: 'Felt Accurate', value: pct(accurateCounts.yes), emoji: '✅' },
-                { label: 'Would Use Again', value: pct(usefulCounts.yes), emoji: '🚀' },
+                { label: 'Utilidad prom.', value: `${avgEnjoyment} / 5`, emoji: '⭐' },
+                { label: 'Sintió preciso', value: pct(accurateCounts.yes), emoji: '✅' },
+                { label: 'Lo usaría again', value: pct(usefulCounts.yes), emoji: '🚀' },
               ].map(stat => (
                 <div key={stat.label} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-4 text-center">
                   <div className="text-2xl mb-1">{stat.emoji}</div>
@@ -95,7 +95,7 @@ export default function SummaryPage() {
             {/* Avg score distribution */}
             {avgScore !== null && (
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-5 text-center">
-                <p className="text-xs text-slate-400 mb-1">Average relationship health score submitted</p>
+                <p className="text-xs text-slate-400 mb-1">Puntaje promedio de salud relacional</p>
                 <div className="text-4xl font-bold text-slate-700" style={{ fontFamily: 'Lora, serif' }}>
                   {avgScore}<span className="text-xl text-slate-300">/100</span>
                 </div>
@@ -104,11 +104,11 @@ export default function SummaryPage() {
 
             {/* Accuracy breakdown */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-5">
-              <h2 className="text-sm font-semibold text-slate-600 mb-4">Did the score feel accurate?</h2>
+              <h2 className="text-sm font-semibold text-slate-600 mb-4">¿El puntaje reflejó bien la relación?</h2>
               {([
-                { key: 'yes', label: '✅ Yes, spot on', color: '#f9a8d4' },
-                { key: 'somewhat', label: '🤔 Kind of', color: '#fcd9e8' },
-                { key: 'no', label: '❌ Not really', color: '#fce7f3' },
+                { key: 'yes', label: '✅ Sí, exacto', color: '#f9a8d4' },
+                { key: 'somewhat', label: '🤔 Más o menos', color: '#fcd9e8' },
+                { key: 'no', label: '❌ No mucho', color: '#fce7f3' },
               ] as const).map(row => {
                 const count = accurateCounts[row.key];
                 const width = total > 0 ? (count / total) * 100 : 0;
@@ -126,11 +126,11 @@ export default function SummaryPage() {
 
             {/* Would use again */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-5">
-              <h2 className="text-sm font-semibold text-slate-600 mb-4">Would use again with partner?</h2>
+              <h2 className="text-sm font-semibold text-slate-600 mb-4">¿Lo usarías de nuevo con tu pareja?</h2>
               {([
-                { key: 'yes', label: '🚀 Definitely', color: '#f9a8d4' },
-                { key: 'maybe', label: '🤷 Maybe', color: '#fcd9e8' },
-                { key: 'no', label: '🚫 Probably not', color: '#fce7f3' },
+                { key: 'yes', label: '🚀 Definitivamente', color: '#f9a8d4' },
+                { key: 'maybe', label: '🤷 Quizás', color: '#fcd9e8' },
+                { key: 'no', label: '🚫 Probablemente no', color: '#fce7f3' },
               ] as const).map(row => {
                 const count = usefulCounts[row.key];
                 const width = total > 0 ? (count / total) * 100 : 0;
@@ -150,13 +150,13 @@ export default function SummaryPage() {
             {suggestions.length > 0 && (
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-5">
                 <h2 className="text-sm font-semibold text-slate-600 mb-4">
-                  💬 Suggestions ({suggestions.length})
+                  💬 Sugerencias ({suggestions.length})
                 </h2>
                 <div className="flex flex-col gap-2">
                   {suggestions.map((s, i) => (
                     <div key={i} className="bg-pink-50 border border-pink-100 rounded-xl px-4 py-3">
                       <p className="text-sm text-slate-600 italic leading-relaxed">&ldquo;{s.text}&rdquo;</p>
-                      <p className="text-xs text-slate-300 mt-1">Score: {s.score}/100 · {s.date}</p>
+                      <p className="text-xs text-slate-300 mt-1">Puntaje: {s.score}/100 · {s.date}</p>
                     </div>
                   ))}
                 </div>
@@ -166,7 +166,7 @@ export default function SummaryPage() {
             {/* All responses table */}
             <details className="bg-white/80 backdrop-blur-sm rounded-2xl border border-pink-100 p-5">
               <summary className="text-sm font-semibold text-slate-600 cursor-pointer">
-                📋 All Responses ({total})
+                📋 Todas las respuestas ({total})
               </summary>
               <div className="mt-4 overflow-x-auto">
                 <table className="w-full text-xs text-slate-500 border-collapse">

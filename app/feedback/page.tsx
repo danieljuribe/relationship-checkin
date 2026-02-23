@@ -33,17 +33,17 @@ function FeedbackForm() {
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm border border-pink-100 p-10 max-w-md w-full text-center">
           <div className="text-6xl mb-4">🙏</div>
           <h2 className="text-2xl font-bold text-slate-700 mb-3" style={{ fontFamily: 'Lora, serif' }}>
-            Thank you!
+            ¡Gracias!
           </h2>
           <p className="text-slate-400 mb-6 text-sm leading-relaxed">
-            Your feedback helps make this better for everyone.
+            Tu opinión nos ayuda a mejorar la experiencia.
           </p>
           <button
             onClick={() => router.push('/')}
             className="w-full py-3 rounded-2xl text-white font-semibold transition-all hover:opacity-90"
             style={{ background: 'linear-gradient(135deg, #f9a8d4, #ec4899)' }}
           >
-            Back to check-in →
+            Volver al check-in →
           </button>
         </div>
       </main>
@@ -57,23 +57,23 @@ function FeedbackForm() {
           <div className="text-4xl mb-2">💌</div>
           <p className="text-xs font-semibold tracking-[4px] uppercase text-pink-400 mb-1"
              style={{ fontFamily: 'Inter, sans-serif' }}>
-            Quick feedback
+            Feedback rápido
           </p>
           <h1 className="text-2xl font-bold text-slate-700" style={{ fontFamily: 'Lora, serif' }}>
-            How was this for you?
+            ¿Cómo te fue?
           </h1>
           {overallScore && (
             <p className="text-slate-400 text-sm mt-1">
-              Your check-in score: <span className="text-pink-400 font-medium">{overallScore}/100</span>
+              Tu puntaje: <span className="text-pink-400 font-medium">{overallScore}/100</span>
             </p>
           )}
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
-          {/* Q1: Enjoyment */}
+          {/* Q1: Utilidad */}
           <div>
-            <p className="text-slate-600 font-medium text-sm mb-3">How useful was this check-in?</p>
+            <p className="text-slate-600 font-medium text-sm mb-3">¿Qué tan útil fue este check-in?</p>
             <div className="flex gap-2 justify-center">
               {[1, 2, 3, 4, 5].map(n => (
                 <button
@@ -88,16 +88,16 @@ function FeedbackForm() {
             </div>
           </div>
 
-          {/* Q2: Accurate */}
+          {/* Q2: Preciso */}
           <div>
             <p className="text-slate-600 font-medium text-sm mb-3">
-              Did your score feel accurate to how things are going?
+              ¿Tu puntaje refleja bien cómo va la relación?
             </p>
             <div className="flex gap-2">
               {[
-                { val: 'yes', label: '✅ Yes, spot on' },
-                { val: 'somewhat', label: '🤔 Kind of' },
-                { val: 'no', label: '❌ Not really' },
+                { val: 'yes', label: '✅ Sí, exacto' },
+                { val: 'somewhat', label: '🤔 Más o menos' },
+                { val: 'no', label: '❌ No mucho' },
               ].map(opt => (
                 <button
                   key={opt.val}
@@ -115,16 +115,16 @@ function FeedbackForm() {
             </div>
           </div>
 
-          {/* Q3: Useful for conversations */}
+          {/* Q3: ¿Lo usarías de nuevo? */}
           <div>
             <p className="text-slate-600 font-medium text-sm mb-3">
-              Would you use this again with your partner?
+              ¿Lo usarías de nuevo con tu pareja?
             </p>
             <div className="flex gap-2">
               {[
-                { val: 'yes', label: '🚀 Definitely' },
-                { val: 'maybe', label: '🤷 Maybe' },
-                { val: 'no', label: '🚫 Probably not' },
+                { val: 'yes', label: '🚀 Definitivamente' },
+                { val: 'maybe', label: '🤷 Quizás' },
+                { val: 'no', label: '🚫 Probablemente no' },
               ].map(opt => (
                 <button
                   key={opt.val}
@@ -142,16 +142,16 @@ function FeedbackForm() {
             </div>
           </div>
 
-          {/* Q4: Open text */}
+          {/* Q4: Sugerencias */}
           <div>
             <p className="text-slate-600 font-medium text-sm mb-3">
-              Any suggestions? <span className="text-slate-300 font-normal">(optional)</span>
+              ¿Alguna sugerencia? <span className="text-slate-300 font-normal">(opcional)</span>
             </p>
             <textarea
               value={suggestion}
               onChange={e => setSuggestion(e.target.value)}
               rows={3}
-              placeholder="What would make this better?"
+              placeholder="¿Qué lo haría mejor?"
               className="w-full rounded-2xl border border-pink-100 bg-white/60 px-4 py-3 text-sm text-slate-600 placeholder-slate-300 outline-none focus:border-pink-300 resize-none"
             />
           </div>
@@ -162,10 +162,10 @@ function FeedbackForm() {
             className="w-full py-4 rounded-2xl text-white font-semibold text-base transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
             style={{ background: 'linear-gradient(135deg, #f9a8d4, #ec4899)' }}
           >
-            {submitting ? 'Sending...' : 'Submit 💌'}
+            {submitting ? 'Enviando...' : 'Enviar 💌'}
           </button>
 
-          <p className="text-center text-slate-300 text-xs">— helps us make this better for everyone —</p>
+          <p className="text-center text-slate-300 text-xs">— nos ayuda a mejorar para todos —</p>
         </form>
       </div>
     </main>
@@ -174,7 +174,7 @@ function FeedbackForm() {
 
 export default function FeedbackPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-400">Loading...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-400">Cargando...</div>}>
       <FeedbackForm />
     </Suspense>
   );

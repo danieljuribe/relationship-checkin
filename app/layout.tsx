@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Relationship Check-In",
-  description: "A weekly check-in for couples, grounded in Gottman & Terry Real",
+  title: "El Pegue Semanal",
+  description: "Check-in semanal de pareja, basado en Gottman y Terry Real",
 };
 
 export default function RootLayout({
